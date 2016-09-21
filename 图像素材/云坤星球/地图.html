@@ -45,7 +45,7 @@
 					mouseY = event.pageY;
 				});
 				$(document).click(function(event) {
-					console.log("addLocation(" + mouseX * 4000 / $("img").width() + ", " + mouseY * 2000 / $("img").height() + ", \"\");");
+					console.log("addLocation(" + mouseX * 4000 / $("img").width() + ", " + mouseY * 4000 / $("img").width() + ", \"\");");
 				});
 			});
 		
@@ -70,7 +70,7 @@
     			"title": name
 				}).css({
 					"left": (x / 4000 * $("img").width()) + "px",
-					"top": (y / 2000 * $("img").height()) + "px"
+					"top": (y / 4000 * $("img").width()) + "px"
 				}).tooltip().appendTo('#positions');
 				var mainName = null, altName = null;
 				if (name.endsWith(")")) {
