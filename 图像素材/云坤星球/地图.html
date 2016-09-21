@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>云坤星球地图</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			img, div#positions {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+			a {
+				position: absolute;
+				display: inline-block;
+				padding: 2px;
+				margin: -5px 0 0 -5px;
+				width: 10px;
+				height: 10px;
+				background-color: black;
+				background-clip: content-box;
+				border-radius: 100px;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+				var mouseX, mouseY;
+				$(document).mousemove(function(event) {
+					var dot, eventDoc, doc, body, pageX, pageY;
+					if (event.pageX == null && event.clientX != null) {
+						eventDoc = (event.target && event.target.ownerDocument) || document;
+						doc = eventDoc.documentElement;
+						body = eventDoc.body;
+
+						event.pageX = event.clientX +
+							(doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+							(doc && doc.clientLeft || body && body.clientLeft || 0);
+						event.pageY = event.clientY +
+							(doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+							(doc && doc.clientTop  || body && body.clientTop  || 0);
+					}
+					mouseX = event.pageX;
+					mouseY = event.pageY;
+				});
+				$(document).click(function(event) {
+					console.log("addLocation(" + mouseX * 4000 / $("img").width() + ", " + mouseY * 2000 / $("img").height() + ", \"\");");
+				});
+			});
+		
+			var hash = null
+			function addLocation(x, y, name) {
+				if (hash == null) {
+					hash = new Set(window.location.hash.substring(1).split("#"));
+				}
+				var position;
+				if (x < 200) {
+					position = "right";
+				} else if (x > 3800) {
+					position = "left";
+				} else if (y < 100) {
+					position = "bottom";
+				} else {
+					position = "top";
+				}
+				var tag = jQuery('<a/>', {
+    			"data-toggle": "tooltip",
+    			"data-placement": position,
+    			"title": name
+				}).css({
+					"left": (x / 4000 * $("img").width()) + "px",
+					"top": (y / 2000 * $("img").height()) + "px"
+				}).tooltip().appendTo('#positions');
+				var mainName = null, altName = null;
+				if (name.endsWith(")")) {
+					var names = name.substring(0, name.length - 1).split(" (");
+					mainName = names[0];
+					altName = names[1];
+				}
+				if (hash.has("all") || hash.has(name) || hash.has(mainName) || hash.has(altName)) {
+					setTimeout(function() { tag.tooltip("show"); }, 100)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<img src="原图102933827768700w70i15_rev.png" />
+		<div id="positions">
+		</div>
+		<script>
+			addLocation(403, 726, "枰枋山山城");
+			addLocation(549, 661, "天南城");
+			addLocation(750, 785, "端林城");
+			addLocation(846, 843, "封镇");
+			addLocation(862, 613, "崖桥镇 (冶武城)");
+			addLocation(875, 628, "天都 (天中城)");
+			addLocation(1217, 1707, "青渠镇");
+			addLocation(1268, 603, "贡庚大寨");
+			addLocation(1339, 549, "镜山天座");
+			addLocation(1396, 1224, "柳蕙港");
+			addLocation(1446, 599, "古夜氏城");
+			addLocation(1455, 527, "石晶镇");
+			addLocation(1461, 603, "新玉城");
+			addLocation(1482, 800, "威瑟克罗");
+			addLocation(1508, 435, "提尔多瓦");
+			addLocation(1509, 551, "潘托因");
+			addLocation(1544, 448, "西方域征伐柱");
+			addLocation(1621, 602, "索罗拉斯");
+			addLocation(1780, 1572, "四州城");
+			addLocation(1793, 513, "原柱城 (海龙城)");
+			addLocation(1841, 1401, "夏明泷学院都");
+			addLocation(1878, 673, "卡桑城");
+			addLocation(1889, 544, "白夜城");
+			addLocation(1928, 728, "星降城");
+			addLocation(2012, 190, "会友城");
+			addLocation(2123, 1230, "南疆学院都");
+			addLocation(2303, 499, "静霜城");
+			addLocation(2437, 887, "霍连");
+			addLocation(2513, 193, "戈布根");
+		</script>
+	</body>
+</html>
