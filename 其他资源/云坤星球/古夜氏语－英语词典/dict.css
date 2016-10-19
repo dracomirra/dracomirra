@@ -1,0 +1,45 @@
+@font-face {
+  font-family: Goyichian-Css;
+  src: url(Goyichian.woff);
+}
+
+header {
+	display: none;
+}
+
+p {
+	font-size: 1.5em;
+}
+
+code {
+	font-family: Goyichian-Css;
+	font-size: 0.8em;
+	position: relative;
+	top: 0.05em;
+}
+
+b {
+	font-weight: inherit;
+	position: relative;
+	top: -0.1em;
+}
+
+small {
+	font-size: 0.7em;
+	position: relative;
+	left: 0.7em;
+}
+
+table {
+	font-size: 1.5em;
+}
+
+td {
+	padding: 0 10px 5px 5px;
+}
+
+td code {
+	display: inline-block;
+	width: 1em;
+	text-align: center;
+}
