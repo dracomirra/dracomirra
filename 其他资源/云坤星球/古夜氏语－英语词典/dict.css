@@ -3,6 +3,10 @@
   src: url(Goyichian.woff);
 }
 
+body {
+	margin-left: 15px;
+}
+
 header {
 	display: none;
 }
@@ -42,4 +46,8 @@ table#syllable td code {
 	display: inline-block;
 	width: 1em;
 	text-align: center;
+}
+
+table#numerics td {
+	padding: 0 10px 10px 5px;
 }
