@@ -28,6 +28,10 @@ b {
 	top: -0.1em;
 }
 
+em {
+	text-decoration: underline;
+}
+
 small {
 	font-size: 0.7em;
 	position: relative;
