@@ -38,16 +38,16 @@ table {
 	font-size: 1.5em;
 }
 
-table#syllable td {
+table#syl td {
 	padding: 0 10px 5px 5px;
 }
 
-table#syllable td code {
+table#syl td code {
 	display: inline-block;
 	width: 1em;
 	text-align: center;
 }
 
-table#numerics td {
+table#num td {
 	padding: 0 10px 10px 5px;
 }
