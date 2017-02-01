@@ -25,6 +25,14 @@
 			}
 		</style>
 		<script>
+			Set.prototype.hasOne = function(array) {
+				for (var elem of array) {
+					if (this.has(elem)) {
+						return true;
+					}
+				}
+				return false;
+			}
 			$(document).ready(function() {
 				var mouseX, mouseY;
 				$(document).mousemove(function(event) {
@@ -72,13 +80,8 @@
 					"left": (x / 4000 * $("img").width()) + "px",
 					"top": (y / 4000 * $("img").width()) + "px"
 				}).tooltip().appendTo('#positions');
-				var mainName = null, altName = null;
-				if (name.endsWith(")")) {
-					var names = name.substring(0, name.length - 1).split(" (");
-					mainName = names[0];
-					altName = names[1];
-				}
-				if (hash.has("all") || hash.has(name) || hash.has(mainName) || hash.has(altName)) {
+				var names = name.split("／");
+				if (hash.has("all") || hash.has(name) || hash.hasOne(names)) {
 					setTimeout(function() { tag.tooltip("show"); }, 100)
 				}
 			}
@@ -90,25 +93,28 @@
 		</div>
 		<script>
 			addLocation(403, 726, "枰枋山山城");
-			addLocation(549, 661, "天南城");
+			addLocation(547, 658, "天南城");
+			addLocation(594, 820, "南云岛");
+			addLocation(662, 522, "北山城");
 			addLocation(750, 785, "端林城");
 			addLocation(846, 843, "封镇");
-			addLocation(862, 613, "崖桥镇 (冶武城)");
-			addLocation(875, 628, "天都 (天中城)");
+			addLocation(862, 613, "崖桥镇／冶武城");
+			addLocation(875, 628, "天崖城／天都／天中城");
+			addLocation(1124, 779, "远疆城");
 			addLocation(1217, 1707, "青渠镇");
 			addLocation(1268, 603, "贡庚大寨");
 			addLocation(1339, 549, "镜山天座");
 			addLocation(1396, 1224, "柳蕙港");
 			addLocation(1446, 599, "古夜氏城");
 			addLocation(1455, 527, "石晶镇");
-			addLocation(1461, 603, "新玉城");
+			addLocation(1458, 604, "新玉城");
 			addLocation(1482, 800, "威瑟克罗");
 			addLocation(1508, 435, "提尔多瓦");
 			addLocation(1509, 551, "潘托因");
 			addLocation(1544, 448, "西方域征伐柱");
-			addLocation(1621, 602, "索罗拉斯");
+			addLocation(1618, 602, "索罗拉斯");
 			addLocation(1780, 1572, "四州城");
-			addLocation(1793, 513, "原柱城 (海龙城)");
+			addLocation(1791, 514, "原柱城／海龙城");
 			addLocation(1841, 1401, "夏明泷学院都");
 			addLocation(1878, 673, "卡桑城");
 			addLocation(1889, 544, "白夜城");
